@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ασφάλιση Κατοικίας | Προστασία για το Σπίτι Σας</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Βασικά στυλ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #2c5aa0;
+            --secondary: #1e3a6c;
+            --accent: #ff6b35;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --gray: #6c757d;
+            --success: #28a745;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-icon {
+            color: var(--primary);
+            font-size: 28px;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--dark);
+        }
+        
+        .logo-text span {
+            color: var(--primary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-accent {
+            background-color: var(--accent);
+        }
+        
+        .btn-accent:hover {
+            background-color: #e55a2b;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(44, 90, 160, 0.9) 0%, rgba(30, 58, 108, 0.9) 100%), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--dark);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: var(--accent);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 20px auto 0;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: var(--light);
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--primary);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background-color: rgba(44, 90, 160, 0.1);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 28px;
+        }
+        
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        /* Coverage Section */
+        .coverage {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .coverage-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .coverage-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .coverage-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .coverage-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .coverage-content {
+            padding: 25px;
+        }
+        
+        .coverage-content h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .coverage-content h3 i {
+            color: var(--primary);
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: var(--light);
+            border-radius: 8px;
+            padding: 30px;
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 60px;
+            color: rgba(44, 90, 160, 0.2);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: var(--gray);
+            font-size: 14px;
+        }
+        
+        /* Contact Form Section */
+        .contact {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .contact-info h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .contact-details {
+            margin-top: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+        
+        .form-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .form-title {
+            color: var(--dark);
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 24px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(44, 90, 160, 0.1);
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-message {
+            padding: 12px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+            display: none;
+        }
+        
+        .form-message.success {
+            background-color: rgba(40, 167, 69, 0.1);
+            color: var(--success);
+            border: 1px solid var(--success);
+            display: block;
+        }
+        
+        .form-message.error {
+            background-color: rgba(220, 53, 69, 0.1);
+            color: #dc3545;
+            border: 1px solid #dc3545;
+            display: block;
+        }
+        
+        /* FAQ Section */
+        .faq {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background-color: white;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s, padding 0.3s;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding: 0 20px 20px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+            
+            nav ul li {
+                margin: 0;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div class="logo-text">Ασφάλιση<span>Κατοικίας</span></div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#features">Πλεονεκτήματα</a></li>
+                    <li><a href="#coverage">Κάλυψη</a></li>
+                    <li><a href="#testimonials">Κριτικές</a></li>
+                    <li><a href="#faq">Συχνές Ερωτήσεις</a></li>
+                    <li><a href="#contact">Επικοινωνία</a></li>
+                </ul>
+            </nav>
+            <a href="#contact" class="btn">Δωρεάν Προσφορά</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Ασφάλιση Κατοικίας για Απόλυτη Ηρεμία</h1>
+                <p>Προστατέψτε το σπίτι σας από απρόβλεπτα γεγονότα με την πιο ολοκληρωμένη ασφάλιση στην αγορά</p>
+                <div class="hero-btns">
+                    <a href="#contact" class="btn btn-accent">Ζητήστε Προσφορά</a>
+                    <a href="#coverage" class="btn" style="background: transparent; border: 2px solid white;">Μάθετε Περισσότερα</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Γιατί να Ασφαλίσετε το Σπίτι Σας;</h2>
+                <p>Η ασφάλιση κατοικίας είναι η καλύτερη προστασία για την πιο σημαντική σας επένδυση</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Ολοκληρωμένη Προστασία</h3>
+                    <p>Κάλυψη για πυρκαγιά, υδραυλικά προβλήματα, κλοπή, φυσικές καταστροφές και πολλά άλλα.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-euro-sign"></i>
+                    </div>
+                    <h3>Οικονομική Ασφάλεια</h3>
+                    <p>Αποζημιώσεις που καλύπτουν το κόστος επισκευής ή αντικατάστασης ζημιωμένων αντικειμένων.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24ωρη Υποστήριξη</h3>
+                    <p>Διαθέσιμοι 24/7 για να σας βοηθήσουμε σε περίπτωση έκτακτης ανάγκης ή αξίωσης.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coverage Section -->
+    <section class="coverage" id="coverage">
+        <div class="container">
+            <div class="section-title">
+                <h2>Τι Καλύπτει η Ασφάλισή Μας</h2>
+                <p>Προσφέρουμε ευέλικτες λύσεις που προσαρμόζονται στις ανάγκες του σπιτιού σας</p>
+            </div>
+            <div class="coverage-container">
+                <div class="coverage-card">
+                    <div class="coverage-img" style="background-image: url('https://images.unsplash.com/photo-1560448204-603b3fc33ddc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="coverage-content">
+                        <h3><i class="fas fa-fire"></i> Πυρκαγιά & Έκρηξη</h3>
+                        <p>Πλήρης κάλυψη για ζημιές από πυρκαγιά, έκρηξη και καπνό, συμπεριλαμβανομένων των δαπανών αποκατάστασης.</p>
+                    </div>
+                </div>
+                <div class="coverage-card">
+                    <div class="coverage-img" style="background-image: url('https://images.unsplash.com/photo-1621905252507-b35492cc74b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="coverage-content">
+                        <h3><i class="fas fa-tint"></i> Υδραυλικά Προβλήματα</h3>
+                        <p>Κάλυψη για ζημιές από διαρροές νερού, παροχές, υπερχείλιση και σπασμένους σωλήνες.</p>
+                    </div>
+                </div>
+                <div class="coverage-card">
+                    <div class="coverage-img" style="background-image: url('https://images.unsplash.com/photo-1593454201988-94d85371c3e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="coverage-content">
+                        <h3><i class="fas fa-wind"></i> Φυσικές Καταστροφές</h3>
+                        <p>Προστασία από σεισμό, καταιγίδα, χαλάζι, πλημμύρα και άλλες φυσικές καταστροφές.</p>
+                    </div>
+                </div>
+                <div class="coverage-card">
+                    <div class="coverage-img" style="background-image: url('https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="coverage-content">
+                        <h3><i class="fas fa-gem"></i> Κλοπή & Βανδαλισμός</h3>
+                        <p>Αποζημίωση για κλοπή, απόπειρα διάρρηξης και βανδαλισμό, συμπεριλαμβανομένων ηλεκτρονικών και κοσμημάτων.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Τι Λένε οι Πελάτες Μας</h2>
+                <p>Χιλιάδες ικανοποιημένοι πελάτες μας εμπιστεύονται την ασφάλεια του σπιτιού τους</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        Η ασφάλιση κατοικίας τους μου έσωσε χιλιάδες ευρώ όταν μια διαρροή νερού προκάλεσε ζημιά στο σαλόνι μου. Η διαδικασία αξίωσης ήταν γρήγορη και απρόσκοπτη.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ΜΚ</div>
+                        <div class="author-info">
+                            <h4>Μαρία Κ.</h4>
+                            <p>Αθήνα</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        Μετά από την πυρκαγιά στο διπλανό διαμέρισμα, η ασφαλιστική κάλυψη κάλυψε πλήρως το κόστος καθαρισμού και ανανέωσης του σπιτιού μου. Ευχαριστώ πολύ!
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ΓΠ</div>
+                        <div class="author-info">
+                            <h4>Γιώργος Π.</h4>
+                            <p>Θεσσαλονίκη</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        Ως ιδιοκτήτης πολυτελούς κατοικίας, η ολοκληρωμένη κάλυψη που μου προσφέρουν με δίνει την ηρεμία ότι η περιουσία μου είναι προστατευμένη σε κάθε περίπτωση.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ΕΝ</div>
+                        <div class="author-info">
+                            <h4>Ελένη Ν.</h4>
+                            <p>Πάτρα</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Συχνές Ερωτήσεις</h2>
+                <p>Βρείτε απαντήσεις σε συχνά ερωτήματα σχετικά με την ασφάλιση κατοικίας</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Τι διαφορά έχει η ασφάλιση κατοικίας από την πυροσωστική;
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Η πυροσωστική ασφαλίζει μόνο ένα μέρος της αξίας της κατοικίας σας έναντι πυρκαγιάς και σεισμού, ενώ η ασφάλιση κατοικίας προσφέρει ευρύτερη κάλυψη που περιλαμβάνει κλοπή, υδραυλικά προβλήματα, βανδαλισμό και πολλά άλλα.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Πόσο κοστίζει μια ασφάλιση κατοικίας;
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Το κόστος της ασφάλισης εξαρτάται από πολλούς παράγοντες όπως το μέγεθος και την αξία του ακινήτου, την περιοχή, το είδος της κατοικίας και την επιλεγμένη κάλυψη. Μπορούμε να σας προσφέρουμε μια δωρεάν προσφορά μέσα σε 24 ώρες.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Πώς υποβάλλω αξίωση σε περίπτωση ζημιάς;
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Μπορείτε να υποβάλετε αξίωση μέσω του site μας, τηλεφωνικά στο 210 123 4567, ή μέσω της εφαρμογής μας. Ένας ασφαλιστικός μας εκτιμητής θα επικοινωνήσει μαζί σας εντός 24 ωρών για να ελέγξει τη ζημιά και να ξεκινήσει τη διαδικασία αποζημίωσης.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Μπορώ να αλλάξω τους όρους της ασφάλισής μου;
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Ναι, μπορείτε να προσαρμόσετε την κάλυψη της ασφάλισής σας ανά πάσα στιγμή, είτε για να προσθέσετε επιπλέον προστασία είτε για να μειώσετε το κόστος. Οι αλλαγές ισχύουν από την επόμενη ημέρα και η διαφορά στην ασφάλιστρο θα ληφθεί υπόψη στο επόμενο τιμολόγιο.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Ζητήστε Δωρεάν Προσφορά</h3>
+                    <p>Συμπληρώστε την φόρμα και ένας από τους ειδικούς μας θα επικοινωνήσει μαζί σας εντός 24 ωρών για να σας προτείνει την καλύτερη λύση ασφάλισης για το σπίτι σας.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>210 123 4567</div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>info@asfalisekatikias.gr</div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>Οδός Παράδειγμα 123, Αθήνα</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-container">
+                    <h3 class="form-title">Αίτηση Προσφοράς</h3>
+                    <form id="contactForm" action="https://formspree.io/f/xanaybzo" method="POST">
+                        <div id="formMessage" class="form-message"></div>
+                        <div class="form-group">
+                            <label for="name">Ονοματεπώνυμο *</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Τηλέφωνο *</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="property">Τύπος Ακινήτου</label>
+                            <select id="property" name="property" class="form-control">
+                                <option value="">Επιλέξτε...</option>
+                                <option value="apartment">Διαμέρισμα</option>
+                                <option value="house">Μονοκατοικία</option>
+                                <option value="villa">Βίλα</option>
+                                <option value="business">Επαγγελματικό χώρο</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Πληροφορίες & Ερωτήσεις</label>
+                            <textarea id="message" name="message" class="form-control" placeholder="Περιγράψτε το ακίνητο και τις ανάγκες σας..."></textarea>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%;">Αποστολή Αίτησης</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h4>Ασφάλιση Κατοικίας</h4>
+                    <p>Προστατέψτε το σπίτι και την οικογένειά σας με την ασφάλιση που σας προσφέρει ηρεμία και ασφάλεια.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Σύνδεσμοι</h4>
+                    <ul>
+                        <li><a href="#features">Πλεονεκτήματα</a></li>
+                        <li><a href="#coverage">Κάλυψη</a></li>
+                        <li><a href="#testimonials">Κριτικές</a></li>
+                        <li><a href="#faq">Συχνές Ερωτήσεις</a></li>
+                        <li><a href="#contact">Επικοινωνία</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Υπηρεσίες</h4>
+                    <ul>
+                        <li><a href="#">Ασφάλιση Κατοικίας</a></li>
+                        <li><a href="#">Ασφάλιση Περιουσίας</a></li>
+                        <li><a href="#">Ασφάλιση Επιχειρήσεων</a></li>
+                        <li><a href="#">Ασφάλιση Ενοικιαστή</a></li>
+                        <li><a href="#">Πυροσωστική</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Επικοινωνία</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> 210 123 4567</li>
+                        <li><i class="fas fa-envelope"></i> info@asfalisekatikias.gr</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Οδός Παράδειγμα 123, Αθήνα</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Ασφάλιση Κατοικίας. Όλα τα δικαιώματα διατηρούνται.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentNode;
+                item.classList.toggle('active');
+            });
+        });
+
+        // Formspree form handling
+        const form = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+        
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Basic validation
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            
+            if (!name || !email || !phone) {
+                showMessage('Παρακαλώ συμπληρώστε τα υποχρεωτικά πεδία (ονοματεπώνυμο, email και τηλέφωνο).', 'error');
+                return;
+            }
+            
+            // Show loading state
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Αποστολή...';
+            submitBtn.disabled = true;
+            
+            try {
+                const formData = new FormData(form);
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    showMessage('Η αίτησή σας εστάλη με επιτυχία! Θα επικοινωνήσουμε μαζί σας σύντομα.', 'success');
+                    form.reset();
+                } else {
+                    throw new Error('Network response was not ok.');
+                }
+            } catch (error) {
+                showMessage('Προέκυψε σφάλμα κατά την αποστολή. Παρακαλώ δοκιμάστε ξανά ή επικοινωνήστε μαζί μας τηλεφωνικά.', 'error');
+            } finally {
+                // Reset button state
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+        
+        function showMessage(message, type) {
+            formMessage.textContent = message;
+            formMessage.className = 'form-message ' + type;
+            formMessage.style.display = 'block';
+            
+            // Scroll to message
+            formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // Auto hide after 5 seconds for success messages
+            if (type === 'success') {
+                setTimeout(() => {
+                    formMessage.style.display = 'none';
+                }, 5000);
+            }
+        }
+    </script>
+</body>
+</html>
